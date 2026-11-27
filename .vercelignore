@@ -1,3 +1,6 @@
 tools/
 .claude/
 .mcp.json
+csv/
+*.db
+*.db-*
