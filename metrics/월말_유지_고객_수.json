@@ -1,0 +1,26 @@
+{
+  "id": "month_end_retained_customers",
+  "name": "월말 유지 고객 수",
+  "purpose": "그 달 마지막 날에 가입 상태인 고객이 몇 명인지",
+  "kind": "base",
+  "unit": "명",
+  "elements": {
+    "numerator": "가입일이 말일 이전이고, 해지일이 없거나 말일보다 뒤인 고객 수 (활성 고객 비율 정의서의 분모와 같은 정의)",
+    "denominator": "없음 — 개수로 보고한다",
+    "period": "월 단위. 가입 상태는 말일 기준",
+    "filter": "없음(전체)",
+    "exclusion": "없음",
+    "min_sample": { "value": null, "reason": "개수로 보고하는 지표라 표본 기준을 두지 않는다" }
+  },
+  "sql": "SELECT COUNT(*) AS numerator FROM customers c WHERE c.signup_date <= DATE '{month_end}' AND (c.churn_date IS NULL OR c.churn_date > DATE '{month_end}')",
+  "sources": ["customers.signup_date", "customers.churn_date"],
+  "rejected": [
+    {
+      "name": "customers.is_churned = FALSE 이고 가입일이 말일 이전인 고객",
+      "sql": "SELECT COUNT(*) AS numerator FROM customers c WHERE c.signup_date <= DATE '{month_end}' AND c.is_churned = FALSE",
+      "reason": "is_churned 는 지금 시점의 상태라 지난 달에 쓰면 1월이 6천 명 적게 나온다(43,297 대신 37,093)"
+    }
+  ],
+  "unanswerable": "말일 전에 해지한 고객이 그 달 안에 얼마를 썼는지",
+  "decision": null
+}

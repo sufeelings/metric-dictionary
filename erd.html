@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>상담 만족도 ERD</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1f2328; --muted:#59636e; --line:#d1d9e0; --card:#f6f8fa; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#9198a1; --line:#3d444d; --card:#151b23; }
+  }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font-family:-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height:1.6; }
+  main { max-width:960px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:1.4rem; margin:0 0 4px; }
+  h2 { font-size:1.1rem; margin:32px 0 8px; }
+  p.sub { color:var(--muted); margin:0 0 20px; }
+  .diagram { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:0.95rem; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; }
+  code { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:0.9em; }
+  .note { color:var(--muted); font-size:0.9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>상담 만족도 ERD</h1>
+  <p class="sub">csat_survey · support_tickets · agents · customers. 컬럼은 키와 만족도 계산에 쓰는 것만 넣었습니다. 선은 실제 값이 조인되는 것만 그었습니다.</p>
+
+  <div class="diagram">
+<pre class="mermaid">
+erDiagram
+  customers ||--o{ support_tickets : "문의함"
+  agents ||--|{ support_tickets : "응대함"
+  support_tickets ||--o| csat_survey : "설문 받음"
+  customers ||--o{ csat_survey : "응답함"
+
+  customers {
+    VARCHAR customer_id PK
+  }
+  agents {
+    VARCHAR agent_id PK
+  }
+  support_tickets {
+    VARCHAR ticket_id PK
+    VARCHAR customer_id FK
+    VARCHAR agent_id FK
+  }
+  csat_survey {
+    VARCHAR survey_id PK
+    VARCHAR ticket_id FK
+    VARCHAR customer_id FK
+    DATE survey_date "응답일 (집계 기간 기준)"
+    INTEGER csat "만족도 점수 1~5"
+  }
+</pre>
+  </div>
+
+  <h2>테이블별 한 행의 뜻</h2>
+  <table>
+    <thead><tr><th>테이블</th><th>한 행</th><th>행 수</th><th>키</th></tr></thead>
+    <tbody>
+      <tr><td><code>csat_survey</code></td><td>상담 뒤 받은 만족도 설문 응답 1건입니다. 문의 1건마다 응답은 많아야 1건입니다.</td><td>9,687</td><td><code>survey_id</code></td></tr>
+      <tr><td><code>support_tickets</code></td><td>고객 문의(상담) 1건입니다. 담당 상담원은 1명입니다.</td><td>32,789</td><td><code>ticket_id</code></td></tr>
+      <tr><td><code>agents</code></td><td>상담원 1명입니다.</td><td>120</td><td><code>agent_id</code></td></tr>
+      <tr><td><code>customers</code></td><td>고객 1명입니다.</td><td>50,000</td><td><code>customer_id</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2>선을 확인한 방법</h2>
+  <table>
+    <thead><tr><th>선</th><th>확인 결과 (data/*.parquet 를 DuckDB로 조회)</th></tr></thead>
+    <tbody>
+      <tr><td><code>csat_survey.ticket_id → support_tickets.ticket_id</code></td><td>설문 9,687건이 모두 문의와 매칭됩니다. 문의 1건에 설문은 최대 1건이고, 설문일은 문의일로부터 1~3일 뒤입니다.</td></tr>
+      <tr><td><code>support_tickets.agent_id → agents.agent_id</code></td><td>문의 32,789건이 모두 상담원과 매칭됩니다. 상담원 120명 모두 문의를 1건 이상 맡았습니다.</td></tr>
+      <tr><td><code>support_tickets.customer_id → customers.customer_id</code></td><td>문의 32,789건이 모두 고객과 매칭됩니다(고객 23,398명). 문의가 없는 고객도 있습니다.</td></tr>
+      <tr><td><code>csat_survey.customer_id → customers.customer_id</code></td><td>설문 9,687건이 모두 고객과 매칭됩니다. 이 값은 해당 문의의 customer_id와 9,687건 모두 같아서, 문의를 거쳐 가는 경로와 같은 고객을 가리킵니다.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">metrics/ 에는 아직 '상담 만족도' 정의서가 없습니다. 그래서 만족도 컬럼은 <code>csat</code>와 <code>survey_date</code>로 잡았는데, 이것은 가정입니다. 정의서가 생기면 그에 맞춰 바꿔야 합니다.</p>
+</main>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs";
+  const dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  mermaid.initialize({ startOnLoad: true, theme: dark ? "dark" : "default", er: { useMaxWidth: true } });
+</script>
+</body>
+</html>

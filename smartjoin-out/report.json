@@ -1,0 +1,4734 @@
+{
+  "source_path": "/Users/jamespark/edata9-work/metric-dictionary/data",
+  "settings": {
+    "min_confidence": 0.8,
+    "retention_confidence_floor": 0.0,
+    "sample_rows": 10000,
+    "sample_seed": 42,
+    "distinct_low_card_threshold": 64,
+    "near_unique_threshold": 0.9,
+    "date_caps": {
+      "temporal_overlap": 0.65,
+      "mixed_temporal": 0.75,
+      "temporal_overlap_signal": 0.35,
+      "mixed_temporal_signal": 0.6
+    },
+    "derived_joins_enabled": true,
+    "derived_max_transforms_per_column": 2,
+    "derived_max_columns_per_table": 6,
+    "derived_min_distinct": 20,
+    "derived_max_ambiguous_targets": 1,
+    "derived_conf_mult": 0.95
+  },
+  "tables": [
+    {
+      "table_name": "ad_spend",
+      "row_count": 5984,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [],
+      "near_unique_columns": [
+        "impressions",
+        "spend"
+      ],
+      "columns": [
+        {
+          "name": "campaign_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 120,
+          "unique_ratio": 0.020053475935828877,
+          "near_unique": false,
+          "entropy": 6.741387168953048,
+          "sample_values": [
+            "CMP0001",
+            "CMP0002",
+            "CMP0003",
+            "CMP0004",
+            "CMP0005"
+          ],
+          "min_value": "CMP0001",
+          "max_value": "CMP0120",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "spend_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 357,
+          "unique_ratio": 0.05965909090909091,
+          "near_unique": false,
+          "entropy": 8.386526006379727,
+          "sample_values": [
+            "2025-02-12",
+            "2025-02-13",
+            "2025-02-14",
+            "2025-02-15",
+            "2025-02-16"
+          ],
+          "min_value": "2025-01-09",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "impressions",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 5971,
+          "unique_ratio": 0.9978275401069518,
+          "near_unique": true,
+          "entropy": 12.54254954010334,
+          "sample_values": [
+            2088942,
+            2484110,
+            1742265,
+            755842,
+            1737340
+          ],
+          "min_value": 19027,
+          "max_value": 48308431,
+          "avg_length": 6.311998663101604,
+          "min_length": 5,
+          "max_length": 8
+        },
+        {
+          "name": "clicks",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 5269,
+          "unique_ratio": 0.8805147058823529,
+          "near_unique": false,
+          "entropy": 12.298370470398659,
+          "sample_values": [
+            22175,
+            29395,
+            9584,
+            3272,
+            29184
+          ],
+          "min_value": 121,
+          "max_value": 531853,
+          "avg_length": 4.403910427807487,
+          "min_length": 3,
+          "max_length": 6
+        },
+        {
+          "name": "spend",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 5982,
+          "unique_ratio": 0.9996657754010695,
+          "near_unique": true,
+          "entropy": 12.54622601069158,
+          "sample_values": [
+            11591283,
+            10315519,
+            6103013,
+            2568771,
+            8675442
+          ],
+          "min_value": 122507,
+          "max_value": 153948422,
+          "avg_length": 6.976270053475936,
+          "min_length": 6,
+          "max_length": 9
+        }
+      ]
+    },
+    {
+      "table_name": "agents",
+      "row_count": 120,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "agent_id"
+      ],
+      "near_unique_columns": [
+        "agent_id",
+        "hire_date",
+        "training_hours"
+      ],
+      "columns": [
+        {
+          "name": "agent_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 120,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 6.906890595608536,
+          "sample_values": [
+            "AG001",
+            "AG002",
+            "AG003",
+            "AG004",
+            "AG005"
+          ],
+          "min_value": "AG001",
+          "max_value": "AG120",
+          "avg_length": 5.0,
+          "min_length": 5,
+          "max_length": 5
+        },
+        {
+          "name": "team",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.041666666666666664,
+          "near_unique": false,
+          "entropy": 2.268533118206156,
+          "sample_values": [
+            "가입팀",
+            "요금팀",
+            "일반",
+            "품질팀",
+            "해지방어팀"
+          ],
+          "min_value": "가입팀",
+          "max_value": "해지방어팀",
+          "avg_length": 2.9916666666666667,
+          "min_length": 2,
+          "max_length": 5
+        },
+        {
+          "name": "hire_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 117,
+          "unique_ratio": 0.975,
+          "near_unique": true,
+          "entropy": 6.856890595608534,
+          "sample_values": [
+            "2019-03-08",
+            "2024-03-11",
+            "2021-11-14",
+            "2017-12-08",
+            "2017-12-16"
+          ],
+          "min_value": "2017-12-08",
+          "max_value": "2024-10-15",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "job_satisfaction",
+          "dtype": "Float64",
+          "null_pct": 0.0,
+          "distinct_count": 25,
+          "unique_ratio": 0.20833333333333334,
+          "near_unique": false,
+          "entropy": 4.389565091840822,
+          "sample_values": [
+            3.7,
+            4.0,
+            3.2,
+            3.0,
+            3.1
+          ],
+          "min_value": 2.0,
+          "max_value": 4.5,
+          "avg_length": 3.0,
+          "min_length": 3,
+          "max_length": 3
+        },
+        {
+          "name": "burnout_score",
+          "dtype": "Float64",
+          "null_pct": 0.0,
+          "distinct_count": 33,
+          "unique_ratio": 0.275,
+          "near_unique": false,
+          "entropy": 4.721492047769026,
+          "sample_values": [
+            3.2,
+            2.8,
+            1.6,
+            2.4,
+            2.6
+          ],
+          "min_value": 1.1,
+          "max_value": 4.7,
+          "avg_length": 3.0,
+          "min_length": 3,
+          "max_length": 3
+        },
+        {
+          "name": "training_hours",
+          "dtype": "Float64",
+          "null_pct": 0.0,
+          "distinct_count": 108,
+          "unique_ratio": 0.9,
+          "near_unique": true,
+          "entropy": 6.694309137239139,
+          "sample_values": [
+            20.9,
+            34.3,
+            7.7,
+            12.0,
+            18.9
+          ],
+          "min_value": 2.3,
+          "max_value": 57.8,
+          "avg_length": 3.816666666666667,
+          "min_length": 3,
+          "max_length": 4
+        },
+        {
+          "name": "is_resigned",
+          "dtype": "Boolean",
+          "null_pct": 0.0,
+          "distinct_count": 2,
+          "unique_ratio": 0.016666666666666666,
+          "near_unique": false,
+          "entropy": 0.49486822993554413,
+          "sample_values": [
+            false,
+            true
+          ],
+          "min_value": false,
+          "max_value": true,
+          "avg_length": 4.891666666666667,
+          "min_length": 4,
+          "max_length": 5
+        }
+      ]
+    },
+    {
+      "table_name": "campaigns",
+      "row_count": 120,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "campaign_id"
+      ],
+      "near_unique_columns": [
+        "campaign_id",
+        "total_budget"
+      ],
+      "columns": [
+        {
+          "name": "campaign_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 120,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 6.906890595608536,
+          "sample_values": [
+            "CMP0001",
+            "CMP0002",
+            "CMP0003",
+            "CMP0004",
+            "CMP0005"
+          ],
+          "min_value": "CMP0001",
+          "max_value": "CMP0120",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "campaign_name",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 105,
+          "unique_ratio": 0.875,
+          "near_unique": false,
+          "entropy": 6.650599866423835,
+          "sample_values": [
+            "검색_202502_01",
+            "검색_202506_02",
+            "디스플레이_202512_03",
+            "디스플레이_202509_04",
+            "추천_202502_05"
+          ],
+          "min_value": "검색_202501_09",
+          "max_value": "추천_202512_09",
+          "avg_length": 12.875,
+          "min_length": 12,
+          "max_length": 15
+        },
+        {
+          "name": "acquisition_channel",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.041666666666666664,
+          "near_unique": false,
+          "entropy": 2.186420335617956,
+          "sample_values": [
+            "검색",
+            "디스플레이",
+            "추천",
+            "제휴",
+            "오프라인"
+          ],
+          "min_value": "검색",
+          "max_value": "추천",
+          "avg_length": 2.875,
+          "min_length": 2,
+          "max_length": 5
+        },
+        {
+          "name": "objective",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 3,
+          "unique_ratio": 0.025,
+          "near_unique": false,
+          "entropy": 1.5096425467011296,
+          "sample_values": [
+            "전환",
+            "인지",
+            "리타게팅"
+          ],
+          "min_value": "리타게팅",
+          "max_value": "전환",
+          "avg_length": 2.45,
+          "min_length": 2,
+          "max_length": 4
+        },
+        {
+          "name": "start_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 105,
+          "unique_ratio": 0.875,
+          "near_unique": false,
+          "entropy": 6.656890595608529,
+          "sample_values": [
+            "2025-02-12",
+            "2025-06-08",
+            "2025-12-08",
+            "2025-09-25",
+            "2025-02-02"
+          ],
+          "min_value": "2025-01-09",
+          "max_value": "2025-12-30",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "end_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 89,
+          "unique_ratio": 0.7416666666666667,
+          "near_unique": false,
+          "entropy": 5.973987788091243,
+          "sample_values": [
+            "2025-03-05",
+            "2025-08-10",
+            "2025-12-24",
+            "2025-12-18",
+            "2025-03-07"
+          ],
+          "min_value": "2025-02-23",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "target_segment",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.041666666666666664,
+          "near_unique": false,
+          "entropy": 2.2661327621439713,
+          "sample_values": [
+            "20대",
+            "30대",
+            "50대",
+            "40대",
+            "60대이상"
+          ],
+          "min_value": "20대",
+          "max_value": "60대이상",
+          "avg_length": 3.25,
+          "min_length": 3,
+          "max_length": 5
+        },
+        {
+          "name": "total_budget",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 119,
+          "unique_ratio": 0.9916666666666667,
+          "near_unique": true,
+          "entropy": 6.890223928941869,
+          "sample_values": [
+            250500000,
+            286800000,
+            65300000,
+            157400000,
+            347000000
+          ],
+          "min_value": 30400000,
+          "max_value": 395100000,
+          "avg_length": 8.841666666666667,
+          "min_length": 8,
+          "max_length": 9
+        }
+      ]
+    },
+    {
+      "table_name": "csat_survey",
+      "row_count": 9687,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "survey_id",
+        "ticket_id"
+      ],
+      "near_unique_columns": [
+        "customer_id",
+        "survey_id",
+        "ticket_id"
+      ],
+      "columns": [
+        {
+          "name": "survey_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 9687,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 13.241834226334444,
+          "sample_values": [
+            "S000001",
+            "S000002",
+            "S000003",
+            "S000004",
+            "S000005"
+          ],
+          "min_value": "S000001",
+          "max_value": "S009687",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "ticket_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 9687,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 13.241834226334444,
+          "sample_values": [
+            "T000003",
+            "T000006",
+            "T000010",
+            "T000015",
+            "T000016"
+          ],
+          "min_value": "T000003",
+          "max_value": "T032785",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "customer_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 8730,
+          "unique_ratio": 0.901207804273769,
+          "near_unique": true,
+          "entropy": 13.038978059550127,
+          "sample_values": [
+            "C027256",
+            "C040730",
+            "C007018",
+            "C033259",
+            "C035094"
+          ],
+          "min_value": "C000001",
+          "max_value": "C049976",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "survey_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 367,
+          "unique_ratio": 0.03788582636523175,
+          "near_unique": false,
+          "entropy": 8.486627280471323,
+          "sample_values": [
+            "2025-08-15",
+            "2025-02-08",
+            "2025-04-19",
+            "2025-01-17",
+            "2025-09-20"
+          ],
+          "min_value": "2025-01-02",
+          "max_value": "2026-01-03",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "csat",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.0005161556725508413,
+          "near_unique": false,
+          "entropy": 1.9976472729337833,
+          "sample_values": [
+            4,
+            1,
+            2,
+            3,
+            5
+          ],
+          "min_value": 1,
+          "max_value": 5,
+          "avg_length": 1.0,
+          "min_length": 1,
+          "max_length": 1
+        },
+        {
+          "name": "nps",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 11,
+          "unique_ratio": 0.001135542479611851,
+          "near_unique": false,
+          "entropy": 3.160267078782037,
+          "sample_values": [
+            7,
+            0,
+            1,
+            3,
+            10
+          ],
+          "min_value": 0,
+          "max_value": 10,
+          "avg_length": 1.2617941571177866,
+          "min_length": 1,
+          "max_length": 2
+        },
+        {
+          "name": "comment",
+          "dtype": "String",
+          "null_pct": 0.6984618560957985,
+          "distinct_count": 12,
+          "unique_ratio": 0.004108182129407737,
+          "near_unique": false,
+          "entropy": 3.343643200476801,
+          "sample_values": [
+            "보통입니다",
+            "해결은 됐는데 시간이 걸렸어요",
+            "담당자분이 꼼꼼했어요",
+            "매우 만족합니다",
+            "기다린 시간에 비해 아쉽습니다"
+          ],
+          "min_value": "같은 말을 세 번 했습니다",
+          "max_value": "해결은 됐는데 시간이 걸렸어요",
+          "avg_length": 11.93118794933242,
+          "min_length": 5,
+          "max_length": 16
+        }
+      ]
+    },
+    {
+      "table_name": "customers",
+      "row_count": 50000,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "customer_id"
+      ],
+      "near_unique_columns": [
+        "customer_id",
+        "visitor_id"
+      ],
+      "columns": [
+        {
+          "name": "customer_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 50000,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 15.609640474427614,
+          "sample_values": [
+            "C000001",
+            "C000002",
+            "C000003",
+            "C000004",
+            "C000005"
+          ],
+          "min_value": "C000001",
+          "max_value": "C050000",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "customer_name",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 22742,
+          "unique_ratio": 0.45484,
+          "near_unique": false,
+          "entropy": 14.27415483569679,
+          "sample_values": [
+            "윤리원",
+            "조준우",
+            "안태영",
+            "오아아",
+            "장영혜"
+          ],
+          "min_value": "강가경",
+          "max_value": "황호훈",
+          "avg_length": 3.0,
+          "min_length": 3,
+          "max_length": 3
+        },
+        {
+          "name": "visitor_id",
+          "dtype": "String",
+          "null_pct": 0.8703,
+          "distinct_count": 6485,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 12.662890859140859,
+          "sample_values": [
+            "V0000042",
+            "V0000047",
+            "V0000059",
+            "V0000099",
+            "V0000104"
+          ],
+          "min_value": "V0000042",
+          "max_value": "V0179942",
+          "avg_length": 8.0,
+          "min_length": 8,
+          "max_length": 8
+        },
+        {
+          "name": "signup_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 2535,
+          "unique_ratio": 0.0507,
+          "near_unique": false,
+          "entropy": 11.264534851674723,
+          "sample_values": [
+            "2019-12-25",
+            "2022-03-02",
+            "2020-04-25",
+            "2021-06-05",
+            "2024-03-13"
+          ],
+          "min_value": "2018-12-25",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "acquisition_channel",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.0001,
+          "near_unique": false,
+          "entropy": 2.1767674486393735,
+          "sample_values": [
+            "추천",
+            "제휴",
+            "검색",
+            "오프라인",
+            "디스플레이"
+          ],
+          "min_value": "검색",
+          "max_value": "추천",
+          "avg_length": 2.85574,
+          "min_length": 2,
+          "max_length": 5
+        },
+        {
+          "name": "campaign_id",
+          "dtype": "String",
+          "null_pct": 0.8703,
+          "distinct_count": 120,
+          "unique_ratio": 0.018504240555127217,
+          "near_unique": false,
+          "entropy": 6.853967923100619,
+          "sample_values": [
+            "CMP0064",
+            "CMP0081",
+            "CMP0072",
+            "CMP0008",
+            "CMP0066"
+          ],
+          "min_value": "CMP0001",
+          "max_value": "CMP0120",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "plan_type",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.0001,
+          "near_unique": false,
+          "entropy": 2.244963157864902,
+          "sample_values": [
+            "5G프리미엄",
+            "LTE기본",
+            "LTE무제한",
+            "알뜰",
+            "5G스탠다드"
+          ],
+          "min_value": "5G스탠다드",
+          "max_value": "알뜰",
+          "avg_length": 5.1075,
+          "min_length": 2,
+          "max_length": 6
+        },
+        {
+          "name": "monthly_fee",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.0001,
+          "near_unique": false,
+          "entropy": 2.244963157864902,
+          "sample_values": [
+            89000,
+            33000,
+            45000,
+            19000,
+            55000
+          ],
+          "min_value": 19000,
+          "max_value": 89000,
+          "avg_length": 5.0,
+          "min_length": 5,
+          "max_length": 5
+        },
+        {
+          "name": "age_group",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.0001,
+          "near_unique": false,
+          "entropy": 2.2572180860440074,
+          "sample_values": [
+            "30대",
+            "40대",
+            "20대",
+            "50대",
+            "60대이상"
+          ],
+          "min_value": "20대",
+          "max_value": "60대이상",
+          "avg_length": 3.19976,
+          "min_length": 3,
+          "max_length": 5
+        },
+        {
+          "name": "region",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 17,
+          "unique_ratio": 0.00034,
+          "near_unique": false,
+          "entropy": 3.4889467874597937,
+          "sample_values": [
+            "광주",
+            "세종",
+            "경기",
+            "경북",
+            "대구"
+          ],
+          "min_value": "강원",
+          "max_value": "충북",
+          "avg_length": 2.0,
+          "min_length": 2,
+          "max_length": 2
+        },
+        {
+          "name": "device_os",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 2,
+          "unique_ratio": 0.00004,
+          "near_unique": false,
+          "entropy": 0.9590945399868289,
+          "sample_values": [
+            "iOS",
+            "Android"
+          ],
+          "min_value": "Android",
+          "max_value": "iOS",
+          "avg_length": 5.474,
+          "min_length": 3,
+          "max_length": 7
+        },
+        {
+          "name": "is_churned",
+          "dtype": "Boolean",
+          "null_pct": 0.0,
+          "distinct_count": 2,
+          "unique_ratio": 0.00004,
+          "near_unique": false,
+          "entropy": 0.5974921460690586,
+          "sample_values": [
+            false,
+            true
+          ],
+          "min_value": false,
+          "max_value": true,
+          "avg_length": 4.85488,
+          "min_length": 4,
+          "max_length": 5
+        },
+        {
+          "name": "churn_date",
+          "dtype": "Date",
+          "null_pct": 0.85488,
+          "distinct_count": 365,
+          "unique_ratio": 0.050303197353914,
+          "near_unique": false,
+          "entropy": 8.469188951896752,
+          "sample_values": [
+            "2025-06-14",
+            "2025-01-25",
+            "2025-03-09",
+            "2025-02-21",
+            "2025-08-01"
+          ],
+          "min_value": "2025-01-01",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        }
+      ]
+    },
+    {
+      "table_name": "experiment_assignments",
+      "row_count": 257395,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [],
+      "near_unique_columns": [],
+      "columns": [
+        {
+          "name": "experiment_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.000019425396763728898,
+          "near_unique": false,
+          "entropy": 0.9779168455879444,
+          "sample_values": [
+            "EXP-001",
+            "EXP-002",
+            "EXP-003",
+            "EXP-004",
+            "EXP-005"
+          ],
+          "min_value": "EXP-001",
+          "max_value": "EXP-005",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "visitor_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 166843,
+          "unique_ratio": 0.6481982944501642,
+          "near_unique": false,
+          "entropy": 15.609640474427614,
+          "sample_values": [
+            "V0000002",
+            "V0000009",
+            "V0000010",
+            "V0000029",
+            "V0000034"
+          ],
+          "min_value": "V0000001",
+          "max_value": "V0180000",
+          "avg_length": 8.0,
+          "min_length": 8,
+          "max_length": 8
+        },
+        {
+          "name": "variant",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 2,
+          "unique_ratio": 7.77015870549156e-6,
+          "near_unique": false,
+          "entropy": 0.9999927969002118,
+          "sample_values": [
+            "treatment",
+            "control"
+          ],
+          "min_value": "control",
+          "max_value": "treatment",
+          "avg_length": 7.9766157073758235,
+          "min_length": 7,
+          "max_length": 9
+        },
+        {
+          "name": "assigned_at",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 334,
+          "unique_ratio": 0.0012976165038170904,
+          "near_unique": false,
+          "entropy": 7.0980116552250445,
+          "sample_values": [
+            "2025-03-21",
+            "2025-03-23",
+            "2025-03-13",
+            "2025-03-22",
+            "2025-02-05"
+          ],
+          "min_value": "2025-02-01",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        }
+      ]
+    },
+    {
+      "table_name": "experiments",
+      "row_count": 5,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "end_date",
+        "experiment_id",
+        "experiment_name",
+        "guardrail_metric",
+        "hypothesis",
+        "start_date"
+      ],
+      "near_unique_columns": [
+        "end_date",
+        "experiment_id",
+        "experiment_name",
+        "guardrail_metric",
+        "hypothesis",
+        "start_date"
+      ],
+      "columns": [
+        {
+          "name": "experiment_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 2.321928094887362,
+          "sample_values": [
+            "EXP-001",
+            "EXP-002",
+            "EXP-003",
+            "EXP-004",
+            "EXP-005"
+          ],
+          "min_value": "EXP-001",
+          "max_value": "EXP-005",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "experiment_name",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 2.321928094887362,
+          "sample_values": [
+            "랜딩 CTA 문구 변경",
+            "요금제 비교표 UI 개편",
+            "가입 절차 3단계->2단계",
+            "첫 달 50% 할인 배너",
+            "추천 요금제 알고리즘"
+          ],
+          "min_value": "가입 절차 3단계->2단계",
+          "max_value": "추천 요금제 알고리즘",
+          "avg_length": 12.6,
+          "min_length": 11,
+          "max_length": 14
+        },
+        {
+          "name": "hypothesis",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 2.321928094887362,
+          "sample_values": [
+            "CTA를 혜택 중심으로 바꾸면 요금제 조회가 늘어난다",
+            "비교표를 시각화하면 신청 시작이 늘어난다",
+            "절차를 줄이면 신청 완료가 늘어난다",
+            "할인 배너를 노출하면 신청 시작이 늘어난다",
+            "개인화 추천이 신청 시작을 늘린다"
+          ],
+          "min_value": "CTA를 혜택 중심으로 바꾸면 요금제 조회가 늘어난다",
+          "max_value": "할인 배너를 노출하면 신청 시작이 늘어난다",
+          "avg_length": 22.2,
+          "min_length": 18,
+          "max_length": 29
+        },
+        {
+          "name": "target_funnel_step",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 3,
+          "unique_ratio": 0.6,
+          "near_unique": false,
+          "entropy": 1.3709505944546687,
+          "sample_values": [
+            "요금제조회",
+            "신청시작",
+            "신청완료"
+          ],
+          "min_value": "신청시작",
+          "max_value": "요금제조회",
+          "avg_length": 4.2,
+          "min_length": 4,
+          "max_length": 5
+        },
+        {
+          "name": "primary_metric",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 3,
+          "unique_ratio": 0.6,
+          "near_unique": false,
+          "entropy": 1.3709505944546687,
+          "sample_values": [
+            "조회 전환율",
+            "신청 시작률",
+            "신청 완료율"
+          ],
+          "min_value": "신청 시작률",
+          "max_value": "조회 전환율",
+          "avg_length": 6.0,
+          "min_length": 6,
+          "max_length": 6
+        },
+        {
+          "name": "guardrail_metric",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 2.321928094887362,
+          "sample_values": [
+            "이탈률",
+            "90일 유지율",
+            "CS 문의율",
+            "ARPU",
+            "해지 문의율"
+          ],
+          "min_value": "90일 유지율",
+          "max_value": "해지 문의율",
+          "avg_length": 5.2,
+          "min_length": 3,
+          "max_length": 7
+        },
+        {
+          "name": "start_date",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 2.321928094887362,
+          "sample_values": [
+            "2025-02-01",
+            "2025-04-01",
+            "2025-05-01",
+            "2025-07-01",
+            "2025-10-01"
+          ],
+          "min_value": "2025-02-01",
+          "max_value": "2025-10-01",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "end_date",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 2.321928094887362,
+          "sample_values": [
+            "2025-03-31",
+            "2025-06-30",
+            "2025-10-31",
+            "2025-09-30",
+            "2025-12-31"
+          ],
+          "min_value": "2025-03-31",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        }
+      ]
+    },
+    {
+      "table_name": "funnel_events",
+      "row_count": 301053,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "event_id"
+      ],
+      "near_unique_columns": [
+        "event_id"
+      ],
+      "columns": [
+        {
+          "name": "event_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 301053,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 15.609640474427614,
+          "sample_values": [
+            "E00000001",
+            "E00000002",
+            "E00000003",
+            "E00000004",
+            "E00000005"
+          ],
+          "min_value": "E00000001",
+          "max_value": "E00301053",
+          "avg_length": 9.0,
+          "min_length": 9,
+          "max_length": 9
+        },
+        {
+          "name": "visitor_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 180000,
+          "unique_ratio": 0.5979013662046218,
+          "near_unique": false,
+          "entropy": 14.652512670163604,
+          "sample_values": [
+            "V0000001",
+            "V0000002",
+            "V0000003",
+            "V0000004",
+            "V0000005"
+          ],
+          "min_value": "V0000001",
+          "max_value": "V0180000",
+          "avg_length": 8.0,
+          "min_length": 8,
+          "max_length": 8
+        },
+        {
+          "name": "session_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 188269,
+          "unique_ratio": 0.6253682906332108,
+          "near_unique": false,
+          "entropy": 14.75534213095391,
+          "sample_values": [
+            "S00000001",
+            "S00000004",
+            "S00000005",
+            "S00000007",
+            "S00000008"
+          ],
+          "min_value": "S00000001",
+          "max_value": "S00294063",
+          "avg_length": 9.0,
+          "min_length": 9,
+          "max_length": 9
+        },
+        {
+          "name": "event_timestamp",
+          "dtype": "Datetime(time_unit='ns', time_zone=None)",
+          "null_pct": 0.0,
+          "distinct_count": 232703,
+          "unique_ratio": 0.7729635645550783,
+          "near_unique": false,
+          "entropy": 15.517561676923838,
+          "sample_values": [
+            "2025-10-05T10:47:00",
+            "2025-10-05T18:14:30",
+            "2025-03-21T08:53:00",
+            "2025-03-21T15:11:30",
+            "2025-09-30T15:23:00"
+          ],
+          "min_value": "2025-01-01T01:29:30",
+          "max_value": "2025-12-31T23:59:59",
+          "avg_length": 29.0,
+          "min_length": 29,
+          "max_length": 29
+        },
+        {
+          "name": "event_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 365,
+          "unique_ratio": 0.0012124111036927053,
+          "near_unique": false,
+          "entropy": 8.482877203483573,
+          "sample_values": [
+            "2025-10-05",
+            "2025-03-21",
+            "2025-09-30",
+            "2025-08-28",
+            "2025-11-14"
+          ],
+          "min_value": "2025-01-01",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "funnel_step",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 6,
+          "unique_ratio": 0.00001993004554015406,
+          "near_unique": false,
+          "entropy": 1.5790971638641413,
+          "sample_values": [
+            "랜딩방문",
+            "요금제조회",
+            "신청시작",
+            "신청완료",
+            "개통"
+          ],
+          "min_value": "개통",
+          "max_value": "첫결제",
+          "avg_length": 4.203356219668962,
+          "min_length": 2,
+          "max_length": 5
+        },
+        {
+          "name": "step_order",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 6,
+          "unique_ratio": 0.00001993004554015406,
+          "near_unique": false,
+          "entropy": 1.5790971638641413,
+          "sample_values": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "min_value": 1,
+          "max_value": 6,
+          "avg_length": 1.0,
+          "min_length": 1,
+          "max_length": 1
+        }
+      ]
+    },
+    {
+      "table_name": "sessions",
+      "row_count": 294064,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "session_id"
+      ],
+      "near_unique_columns": [
+        "session_id"
+      ],
+      "columns": [
+        {
+          "name": "session_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 294064,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 15.609640474427614,
+          "sample_values": [
+            "S00000001",
+            "S00000002",
+            "S00000003",
+            "S00000004",
+            "S00000005"
+          ],
+          "min_value": "S00000001",
+          "max_value": "S00294064",
+          "avg_length": 9.0,
+          "min_length": 9,
+          "max_length": 9
+        },
+        {
+          "name": "visitor_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 180000,
+          "unique_ratio": 0.6121116491648076,
+          "near_unique": false,
+          "entropy": 14.685712216703603,
+          "sample_values": [
+            "V0000001",
+            "V0000002",
+            "V0000003",
+            "V0000004",
+            "V0000005"
+          ],
+          "min_value": "V0000001",
+          "max_value": "V0180000",
+          "avg_length": 8.0,
+          "min_length": 8,
+          "max_length": 8
+        },
+        {
+          "name": "session_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 365,
+          "unique_ratio": 0.0012412263996953044,
+          "near_unique": false,
+          "entropy": 8.460564741740887,
+          "sample_values": [
+            "2025-10-05",
+            "2025-10-17",
+            "2025-10-23",
+            "2025-03-21",
+            "2025-09-30"
+          ],
+          "min_value": "2025-01-01",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "acquisition_channel",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.000017003101365689103,
+          "near_unique": false,
+          "entropy": 2.1696653278178775,
+          "sample_values": [
+            "디스플레이",
+            "제휴",
+            "검색",
+            "추천",
+            "오프라인"
+          ],
+          "min_value": "검색",
+          "max_value": "추천",
+          "avg_length": 2.877734098699603,
+          "min_length": 2,
+          "max_length": 5
+        },
+        {
+          "name": "campaign_id",
+          "dtype": "String",
+          "null_pct": 0.3806926383372327,
+          "distinct_count": 120,
+          "unique_ratio": 0.0006589206879131982,
+          "near_unique": false,
+          "entropy": 6.900335269759551,
+          "sample_values": [
+            "CMP0058",
+            "CMP0040",
+            "CMP0092",
+            "CMP0024",
+            "CMP0101"
+          ],
+          "min_value": "CMP0001",
+          "max_value": "CMP0120",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "device",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 3,
+          "unique_ratio": 0.000010201860819413461,
+          "near_unique": false,
+          "entropy": 1.048954361180838,
+          "sample_values": [
+            "mobile",
+            "desktop",
+            "tablet"
+          ],
+          "min_value": "desktop",
+          "max_value": "tablet",
+          "avg_length": 6.2649831329234456,
+          "min_length": 6,
+          "max_length": 7
+        },
+        {
+          "name": "is_first_visit",
+          "dtype": "Boolean",
+          "null_pct": 0.0,
+          "distinct_count": 2,
+          "unique_ratio": 6.80124054627564e-6,
+          "near_unique": false,
+          "entropy": 0.9631672450918831,
+          "sample_values": [
+            true,
+            false
+          ],
+          "min_value": false,
+          "max_value": true,
+          "avg_length": 4.387888350835192,
+          "min_length": 4,
+          "max_length": 5
+        },
+        {
+          "name": "duration_sec",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 791,
+          "unique_ratio": 0.002689890636052016,
+          "near_unique": false,
+          "entropy": 8.397671485489706,
+          "sample_values": [
+            80,
+            29,
+            280,
+            52,
+            193
+          ],
+          "min_value": 0,
+          "max_value": 1032,
+          "avg_length": 2.5742525436639645,
+          "min_length": 1,
+          "max_length": 4
+        }
+      ]
+    },
+    {
+      "table_name": "support_tickets",
+      "row_count": 32789,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "ticket_id"
+      ],
+      "near_unique_columns": [
+        "ticket_id"
+      ],
+      "columns": [
+        {
+          "name": "ticket_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 32789,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 15.000924282583727,
+          "sample_values": [
+            "T000001",
+            "T000002",
+            "T000003",
+            "T000004",
+            "T000005"
+          ],
+          "min_value": "T000001",
+          "max_value": "T032789",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "customer_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 23398,
+          "unique_ratio": 0.7135929732532251,
+          "near_unique": false,
+          "entropy": 14.375630236642493,
+          "sample_values": [
+            "C020278",
+            "C039927",
+            "C027256",
+            "C026257",
+            "C037148"
+          ],
+          "min_value": "C000001",
+          "max_value": "C049996",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "agent_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 120,
+          "unique_ratio": 0.003659763945225533,
+          "near_unique": false,
+          "entropy": 6.794987518053668,
+          "sample_values": [
+            "AG059",
+            "AG081",
+            "AG097",
+            "AG032",
+            "AG095"
+          ],
+          "min_value": "AG001",
+          "max_value": "AG120",
+          "avg_length": 5.0,
+          "min_length": 5,
+          "max_length": 5
+        },
+        {
+          "name": "created_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 365,
+          "unique_ratio": 0.011131782000060996,
+          "near_unique": false,
+          "entropy": 8.503355421581324,
+          "sample_values": [
+            "2025-04-06",
+            "2025-09-13",
+            "2025-08-12",
+            "2025-03-21",
+            "2025-04-13"
+          ],
+          "min_value": "2025-01-01",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "contact_channel",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 4,
+          "unique_ratio": 0.00012199213150751776,
+          "near_unique": false,
+          "entropy": 1.8418721540851517,
+          "sample_values": [
+            "전화",
+            "챗봇",
+            "이메일",
+            "앱"
+          ],
+          "min_value": "앱",
+          "max_value": "챗봇",
+          "avg_length": 1.9014303577419256,
+          "min_length": 1,
+          "max_length": 3
+        },
+        {
+          "name": "ticket_category",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 5,
+          "unique_ratio": 0.0001524901643843972,
+          "near_unique": false,
+          "entropy": 2.2405336524634047,
+          "sample_values": [
+            "가입변경",
+            "기타",
+            "요금",
+            "품질",
+            "해지"
+          ],
+          "min_value": "가입변경",
+          "max_value": "해지",
+          "avg_length": 2.3793955289883804,
+          "min_length": 2,
+          "max_length": 4
+        },
+        {
+          "name": "duration_min",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 73,
+          "unique_ratio": 0.0022263564000121992,
+          "near_unique": false,
+          "entropy": 4.9644619908669325,
+          "sample_values": [
+            13,
+            6,
+            28,
+            8,
+            18
+          ],
+          "min_value": 1,
+          "max_value": 80,
+          "avg_length": 1.5929122571594132,
+          "min_length": 1,
+          "max_length": 2
+        },
+        {
+          "name": "resolution_hours",
+          "dtype": "Float64",
+          "null_pct": 0.0,
+          "distinct_count": 701,
+          "unique_ratio": 0.021379121046692488,
+          "near_unique": false,
+          "entropy": 8.505029006828352,
+          "sample_values": [
+            19.7,
+            0.6,
+            30.0,
+            20.5,
+            8.9
+          ],
+          "min_value": 0.2,
+          "max_value": 97.1,
+          "avg_length": 3.568696819055171,
+          "min_length": 3,
+          "max_length": 4
+        },
+        {
+          "name": "status",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 3,
+          "unique_ratio": 0.00009149409863063833,
+          "near_unique": false,
+          "entropy": 0.527928609097903,
+          "sample_values": [
+            "완료",
+            "보류",
+            "진행중"
+          ],
+          "min_value": "보류",
+          "max_value": "진행중",
+          "avg_length": 2.0610570618195125,
+          "min_length": 2,
+          "max_length": 3
+        },
+        {
+          "name": "is_recontact",
+          "dtype": "Boolean",
+          "null_pct": 0.0,
+          "distinct_count": 2,
+          "unique_ratio": 0.00006099606575375888,
+          "near_unique": false,
+          "entropy": 0.7718756949825072,
+          "sample_values": [
+            false,
+            true
+          ],
+          "min_value": false,
+          "max_value": true,
+          "avg_length": 4.773491109823416,
+          "min_length": 4,
+          "max_length": 5
+        }
+      ]
+    },
+    {
+      "table_name": "usage_monthly",
+      "row_count": 523825,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [],
+      "near_unique_columns": [],
+      "columns": [
+        {
+          "name": "customer_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 49985,
+          "unique_ratio": 0.09542308977234763,
+          "near_unique": false,
+          "entropy": 15.363440474427787,
+          "sample_values": [
+            "C000001",
+            "C000002",
+            "C000003",
+            "C000004",
+            "C000005"
+          ],
+          "min_value": "C000001",
+          "max_value": "C050000",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "year_month",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 12,
+          "unique_ratio": 0.000022908414069584306,
+          "near_unique": false,
+          "entropy": 0.5382065560483033,
+          "sample_values": [
+            "2025-01",
+            "2025-02",
+            "2025-03",
+            "2025-04",
+            "2025-05"
+          ],
+          "min_value": "2025-01",
+          "max_value": "2025-12",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "data_gb",
+          "dtype": "Float64",
+          "null_pct": 0.0,
+          "distinct_count": 7628,
+          "unique_ratio": 0.014562115210232426,
+          "near_unique": false,
+          "entropy": 11.856222759521657,
+          "sample_values": [
+            26.1,
+            42.17,
+            7.95,
+            15.94,
+            10.85
+          ],
+          "min_value": 0.23,
+          "max_value": 128.27,
+          "avg_length": 4.570824225647878,
+          "min_length": 3,
+          "max_length": 6
+        },
+        {
+          "name": "voice_min",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 180,
+          "unique_ratio": 0.00034362621104376464,
+          "near_unique": false,
+          "entropy": 6.797783954632699,
+          "sample_values": [
+            163,
+            170,
+            119,
+            145,
+            115
+          ],
+          "min_value": 55,
+          "max_value": 239,
+          "avg_length": 2.8661995895575814,
+          "min_length": 2,
+          "max_length": 3
+        },
+        {
+          "name": "sms_count",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 33,
+          "unique_ratio": 0.00006299813869135684,
+          "near_unique": false,
+          "entropy": 3.8308984933981804,
+          "sample_values": [
+            5,
+            12,
+            14,
+            8,
+            9
+          ],
+          "min_value": 0,
+          "max_value": 32,
+          "avg_length": 1.7586197680523075,
+          "min_length": 1,
+          "max_length": 2
+        },
+        {
+          "name": "billing_amount",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 7280,
+          "unique_ratio": 0.01389777120221448,
+          "near_unique": false,
+          "entropy": 10.947969467647544,
+          "sample_values": [
+            62580,
+            70790,
+            18620,
+            31180,
+            18440
+          ],
+          "min_value": 10450,
+          "max_value": 100480,
+          "avg_length": 5.000001909034506,
+          "min_length": 5,
+          "max_length": 6
+        },
+        {
+          "name": "app_login_count",
+          "dtype": "Int32",
+          "null_pct": 0.0,
+          "distinct_count": 36,
+          "unique_ratio": 0.00006872524220875292,
+          "near_unique": false,
+          "entropy": 4.061375578663131,
+          "sample_values": [
+            14,
+            10,
+            19,
+            17,
+            13
+          ],
+          "min_value": 0,
+          "max_value": 36,
+          "avg_length": 1.8580861929079369,
+          "min_length": 1,
+          "max_length": 2
+        },
+        {
+          "name": "service_count",
+          "dtype": "Int64",
+          "null_pct": 0.0,
+          "distinct_count": 13,
+          "unique_ratio": 0.000024817448575383,
+          "near_unique": false,
+          "entropy": 2.612253773730468,
+          "sample_values": [
+            3,
+            1,
+            5,
+            4,
+            0
+          ],
+          "min_value": 0,
+          "max_value": 12,
+          "avg_length": 1.0002329022097074,
+          "min_length": 1,
+          "max_length": 2
+        },
+        {
+          "name": "is_active",
+          "dtype": "Boolean",
+          "null_pct": 0.0,
+          "distinct_count": 1,
+          "unique_ratio": 1.9090345057986923e-6,
+          "near_unique": false,
+          "entropy": 0.0,
+          "sample_values": [
+            true
+          ],
+          "min_value": true,
+          "max_value": true,
+          "avg_length": 4.0,
+          "min_length": 4,
+          "max_length": 4
+        }
+      ]
+    },
+    {
+      "table_name": "voc",
+      "row_count": 7718,
+      "duplicate_row_count": 0,
+      "duplicate_row_pct": 0.0,
+      "candidate_unique_columns": [
+        "voc_id"
+      ],
+      "near_unique_columns": [
+        "customer_id",
+        "voc_id"
+      ],
+      "columns": [
+        {
+          "name": "voc_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 7718,
+          "unique_ratio": 1.0,
+          "near_unique": true,
+          "entropy": 12.914011328543078,
+          "sample_values": [
+            "V000001",
+            "V000002",
+            "V000003",
+            "V000004",
+            "V000005"
+          ],
+          "min_value": "V000001",
+          "max_value": "V007718",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "customer_id",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 7124,
+          "unique_ratio": 0.9230370562321845,
+          "near_unique": true,
+          "entropy": 12.757283280466007,
+          "sample_values": [
+            "C048533",
+            "C026177",
+            "C031479",
+            "C007437",
+            "C036062"
+          ],
+          "min_value": "C000005",
+          "max_value": "C049989",
+          "avg_length": 7.0,
+          "min_length": 7,
+          "max_length": 7
+        },
+        {
+          "name": "received_date",
+          "dtype": "Date",
+          "null_pct": 0.0,
+          "distinct_count": 365,
+          "unique_ratio": 0.04729204457113242,
+          "near_unique": false,
+          "entropy": 8.476830183948175,
+          "sample_values": [
+            "2025-08-05",
+            "2025-10-19",
+            "2025-01-30",
+            "2025-11-27",
+            "2025-05-13"
+          ],
+          "min_value": "2025-01-01",
+          "max_value": "2025-12-31",
+          "avg_length": 10.0,
+          "min_length": 10,
+          "max_length": 10
+        },
+        {
+          "name": "contact_channel",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 4,
+          "unique_ratio": 0.0005182689816014512,
+          "near_unique": false,
+          "entropy": 1.8910487840701533,
+          "sample_values": [
+            "전화",
+            "이메일",
+            "챗봇",
+            "앱"
+          ],
+          "min_value": "앱",
+          "max_value": "챗봇",
+          "avg_length": 1.8009847110650428,
+          "min_length": 1,
+          "max_length": 3
+        },
+        {
+          "name": "voc_type",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 4,
+          "unique_ratio": 0.0005182689816014512,
+          "near_unique": false,
+          "entropy": 1.6193697377185896,
+          "sample_values": [
+            "불만",
+            "문의",
+            "제안",
+            "칭찬"
+          ],
+          "min_value": "문의",
+          "max_value": "칭찬",
+          "avg_length": 2.0,
+          "min_length": 2,
+          "max_length": 2
+        },
+        {
+          "name": "voc_category",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 6,
+          "unique_ratio": 0.0007774034724021767,
+          "near_unique": false,
+          "entropy": 2.515975925093235,
+          "sample_values": [
+            "요금",
+            "서비스",
+            "해지관련",
+            "앱기능",
+            "품질"
+          ],
+          "min_value": "기타",
+          "max_value": "해지관련",
+          "avg_length": 2.563228815755377,
+          "min_length": 2,
+          "max_length": 4
+        },
+        {
+          "name": "content",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 24,
+          "unique_ratio": 0.003109613889608707,
+          "near_unique": false,
+          "entropy": 4.13263127672828,
+          "sample_values": [
+            "요금 때문에 불편을 겪고 있습니다. 확인 부탁드립니다.",
+            "서비스 관련하여 문의 사항을 전달드립니다.",
+            "해지관련 때문에 불편을 겪고 있습니다. 확인 부탁드립니다.",
+            "해지관련 관련하여 문의 사항을 전달드립니다.",
+            "요금 관련하여 문의 사항을 전달드립니다."
+          ],
+          "min_value": "기타 관련하여 문의 사항을 전달드립니다.",
+          "max_value": "해지관련 응대가 만족스러웠습니다.",
+          "avg_length": 24.928349313293598,
+          "min_length": 16,
+          "max_length": 32
+        },
+        {
+          "name": "sentiment",
+          "dtype": "String",
+          "null_pct": 0.0,
+          "distinct_count": 3,
+          "unique_ratio": 0.00038870173620108835,
+          "near_unique": false,
+          "entropy": 1.4187926997984102,
+          "sample_values": [
+            "부정",
+            "긍정",
+            "중립"
+          ],
+          "min_value": "긍정",
+          "max_value": "중립",
+          "avg_length": 2.0,
+          "min_length": 2,
+          "max_length": 2
+        }
+      ]
+    }
+  ],
+  "keys": [
+    {
+      "table_name": "ad_spend",
+      "primary_key_candidates": [
+        {
+          "table_name": "ad_spend",
+          "columns": [
+            "spend"
+          ],
+          "uniqueness_ratio": 0.9996657754010695,
+          "null_row_pct": 0.0,
+          "score": 0.9997326203208556,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "ad_spend",
+          "columns": [
+            "impressions"
+          ],
+          "uniqueness_ratio": 0.9978275401069518,
+          "null_row_pct": 0.0,
+          "score": 0.9982620320855615,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "ad_spend",
+          "columns": [
+            "clicks",
+            "spend"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "ad_spend",
+          "columns": [
+            "impressions",
+            "clicks"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "ad_spend",
+          "columns": [
+            "impressions",
+            "spend"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "agents",
+      "primary_key_candidates": [
+        {
+          "table_name": "agents",
+          "columns": [
+            "agent_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "agents",
+          "columns": [
+            "agent_id",
+            "burnout_score"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "agent_id",
+            "hire_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "agent_id",
+            "job_satisfaction"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "agent_id",
+            "training_hours"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "burnout_score",
+            "training_hours"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "hire_date",
+            "burnout_score"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "hire_date",
+            "job_satisfaction"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "agents",
+          "columns": [
+            "hire_date",
+            "training_hours"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "campaigns",
+      "primary_key_candidates": [
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "campaign_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "total_budget"
+          ],
+          "uniqueness_ratio": 0.9916666666666667,
+          "null_row_pct": 0.0,
+          "score": 0.9933333333333334,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "campaign_id",
+            "campaign_name"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "campaign_id",
+            "end_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "campaign_id",
+            "start_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "campaign_id",
+            "total_budget"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "campaign_name",
+            "total_budget"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "end_date",
+            "total_budget"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "campaigns",
+          "columns": [
+            "start_date",
+            "total_budget"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "csat_survey",
+      "primary_key_candidates": [
+        {
+          "table_name": "csat_survey",
+          "columns": [
+            "survey_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "csat_survey",
+          "columns": [
+            "ticket_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "csat_survey",
+          "columns": [
+            "survey_id",
+            "customer_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "csat_survey",
+          "columns": [
+            "survey_id",
+            "ticket_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "csat_survey",
+          "columns": [
+            "ticket_id",
+            "customer_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "customers",
+      "primary_key_candidates": [
+        {
+          "table_name": "customers",
+          "columns": [
+            "customer_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "customers",
+          "columns": [
+            "visitor_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.8703,
+          "score": 0.82594,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "customers",
+          "columns": [
+            "customer_id",
+            "customer_name"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "customers",
+          "columns": [
+            "customer_id",
+            "visitor_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.8703,
+          "score": 0.82594,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "customers",
+          "columns": [
+            "customer_name",
+            "visitor_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.8703,
+          "score": 0.82594,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "experiment_assignments",
+      "primary_key_candidates": [],
+      "composite_key_candidates": []
+    },
+    {
+      "table_name": "experiments",
+      "primary_key_candidates": [
+        {
+          "table_name": "experiments",
+          "columns": [
+            "end_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_name"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "guardrail_metric"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "hypothesis"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "start_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "end_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "experiment_name"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "guardrail_metric"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "hypothesis"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "primary_metric"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "start_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_id",
+            "target_funnel_step"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_name",
+            "end_date"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_name",
+            "guardrail_metric"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "experiments",
+          "columns": [
+            "experiment_name",
+            "hypothesis"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "funnel_events",
+      "primary_key_candidates": [
+        {
+          "table_name": "funnel_events",
+          "columns": [
+            "event_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "funnel_events",
+          "columns": [
+            "event_id",
+            "event_timestamp"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "funnel_events",
+          "columns": [
+            "event_id",
+            "session_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        },
+        {
+          "table_name": "funnel_events",
+          "columns": [
+            "event_id",
+            "visitor_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "sessions",
+      "primary_key_candidates": [
+        {
+          "table_name": "sessions",
+          "columns": [
+            "session_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "sessions",
+          "columns": [
+            "session_id",
+            "visitor_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "support_tickets",
+      "primary_key_candidates": [
+        {
+          "table_name": "support_tickets",
+          "columns": [
+            "ticket_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "support_tickets",
+          "columns": [
+            "ticket_id",
+            "customer_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    },
+    {
+      "table_name": "usage_monthly",
+      "primary_key_candidates": [],
+      "composite_key_candidates": []
+    },
+    {
+      "table_name": "voc",
+      "primary_key_candidates": [
+        {
+          "table_name": "voc",
+          "columns": [
+            "voc_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Single-column uniqueness/null check."
+        }
+      ],
+      "composite_key_candidates": [
+        {
+          "table_name": "voc",
+          "columns": [
+            "voc_id",
+            "customer_id"
+          ],
+          "uniqueness_ratio": 1.0,
+          "null_row_pct": 0.0,
+          "score": 1.0,
+          "rationale": "Bounded composite uniqueness search seeded by near-unique columns."
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "ad_spend",
+      "left_column": "campaign_id",
+      "right_table": "campaigns",
+      "right_column": "campaign_id",
+      "confidence": 1.0,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 1.0,
+          "jaccard": 1.0,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 1.0
+      },
+      "derived": null
+    },
+    {
+      "left_table": "customers",
+      "left_column": "campaign_id",
+      "right_table": "campaigns",
+      "right_column": "campaign_id",
+      "confidence": 1.0,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 1.0,
+          "jaccard": 1.0,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 1.0
+      },
+      "derived": null
+    },
+    {
+      "left_table": "experiment_assignments",
+      "left_column": "experiment_id",
+      "right_table": "experiments",
+      "right_column": "experiment_id",
+      "confidence": 1.0,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 1.0,
+          "jaccard": 1.0,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 1.0
+      },
+      "derived": null
+    },
+    {
+      "left_table": "sessions",
+      "left_column": "campaign_id",
+      "right_table": "campaigns",
+      "right_column": "campaign_id",
+      "confidence": 1.0,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 1.0,
+          "jaccard": 1.0,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 1.0
+      },
+      "derived": null
+    },
+    {
+      "left_table": "support_tickets",
+      "left_column": "agent_id",
+      "right_table": "agents",
+      "right_column": "agent_id",
+      "confidence": 1.0,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 1.0,
+          "jaccard": 1.0,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 1.0
+      },
+      "derived": null
+    },
+    {
+      "left_table": "csat_survey",
+      "left_column": "ticket_id",
+      "right_table": "support_tickets",
+      "right_column": "ticket_id",
+      "confidence": 0.9178509428314876,
+      "relationship_guess": "one_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.2982,
+          "jaccard": 0.1785094283148758,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.9178509428314876
+      },
+      "derived": null
+    },
+    {
+      "left_table": "usage_monthly",
+      "left_column": "customer_id",
+      "right_table": "customers",
+      "right_column": "customer_id",
+      "confidence": 0.9111852346008451,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 1.0,
+          "jaccard": 0.11185234600845008,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.9111852346008451
+      },
+      "derived": null
+    },
+    {
+      "left_table": "csat_survey",
+      "left_column": "customer_id",
+      "right_table": "customers",
+      "right_column": "customer_id",
+      "confidence": 0.9017414198822749,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.9742268041237113,
+          "inclusion_pk_in_fk": 0.1701,
+          "jaccard": 0.09988842562687181,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.9017414198822749
+      },
+      "derived": null
+    },
+    {
+      "left_table": "support_tickets",
+      "left_column": "customer_id",
+      "right_table": "customers",
+      "right_column": "customer_id",
+      "confidence": 0.9014742363495405,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.971,
+          "inclusion_pk_in_fk": 0.45438916,
+          "jaccard": 0.1075423634954037,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.9014742363495405
+      },
+      "derived": null
+    },
+    {
+      "left_table": "voc",
+      "left_column": "customer_id",
+      "right_table": "customers",
+      "right_column": "customer_id",
+      "confidence": 0.8989349825736477,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.9692588433464345,
+          "inclusion_pk_in_fk": 0.1381,
+          "jaccard": 0.08772152702788541,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.8989349825736477
+      },
+      "derived": null
+    },
+    {
+      "left_table": "funnel_events",
+      "left_column": "session_id",
+      "right_table": "sessions",
+      "right_column": "session_id",
+      "confidence": 0.890316918848963,
+      "relationship_guess": "many_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.9645299200000002,
+          "inclusion_pk_in_fk": 0.6175223200000001,
+          "jaccard": 0.01667344448962993,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.890316918848963
+      },
+      "derived": null
+    },
+    {
+      "left_table": "experiment_assignments",
+      "left_column": "assigned_at",
+      "right_table": "ad_spend",
+      "right_column": "spend_date",
+      "confidence": 0.8567153177060298,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5263157894736842,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9355742296918768,
+          "jaccard": 0.9355742296918768,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.8567153177060298
+      },
+      "derived": null
+    },
+    {
+      "left_table": "csat_survey",
+      "left_column": "survey_id",
+      "right_table": "sessions",
+      "right_column": "session_id",
+      "confidence": 0.8382069326102619,
+      "relationship_guess": "one_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.47058823529411764,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.0336,
+          "jaccard": 0.017363443749677018,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.8382069326102619
+      },
+      "derived": null
+    },
+    {
+      "left_table": "customers",
+      "left_column": "visitor_id",
+      "right_table": "sessions",
+      "right_column": "visitor_id",
+      "confidence": 0.8246739115225783,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.0363,
+          "jaccard": 0.02251581689616673,
+          "cardinality_alignment": 0.2242232983296153,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.8246739115225783
+      },
+      "derived": null
+    },
+    {
+      "left_table": "customers",
+      "left_column": "visitor_id",
+      "right_table": "funnel_events",
+      "right_column": "visitor_id",
+      "confidence": 0.8153043225786838,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.9797995373939862,
+          "inclusion_pk_in_fk": 0.0353,
+          "jaccard": 0.021881973716836103,
+          "cardinality_alignment": 0.1958027324092435,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.8153043225786838
+      },
+      "derived": null
+    },
+    {
+      "left_table": "experiment_assignments",
+      "left_column": "assigned_at",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.7971755424063118,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.7,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.13175542406311638,
+          "jaccard": 0.13175542406311638,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.7971755424063118
+      },
+      "derived": null
+    },
+    {
+      "left_table": "customers",
+      "left_column": "visitor_id",
+      "right_table": "experiment_assignments",
+      "right_column": "visitor_id",
+      "confidence": 0.7941498655118922,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 1.0,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.8824541094834233,
+          "inclusion_pk_in_fk": 0.0343,
+          "jaccard": 0.021248915871639202,
+          "cardinality_alignment": 0.2963965889003284,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.7941498655118922
+      },
+      "derived": null
+    },
+    {
+      "left_table": "voc",
+      "left_column": "voc_id",
+      "right_table": "experiment_assignments",
+      "right_column": "visitor_id",
+      "confidence": 0.7735028480925117,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5714285714285714,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.9771059341798394,
+          "inclusion_pk_in_fk": 0.0452,
+          "jaccard": 0.026178616935016795,
+          "cardinality_alignment": 0.2963965889003284,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.7735028480925117
+      },
+      "derived": null
+    },
+    {
+      "left_table": "voc",
+      "left_column": "voc_id",
+      "right_table": "funnel_events",
+      "right_column": "visitor_id",
+      "confidence": 0.7706389762223484,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5714285714285714,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.043,
+          "jaccard": 0.024872744099953725,
+          "cardinality_alignment": 0.1958027324092435,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.7706389762223484
+      },
+      "derived": null
+    },
+    {
+      "left_table": "voc",
+      "left_column": "voc_id",
+      "right_table": "sessions",
+      "right_column": "visitor_id",
+      "confidence": 0.768375323634247,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5714285714285714,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.9841927960611558,
+          "inclusion_pk_in_fk": 0.0422,
+          "jaccard": 0.024398704902867715,
+          "cardinality_alignment": 0.2242232983296153,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.768375323634247
+      },
+      "derived": null
+    },
+    {
+      "left_table": "agents",
+      "left_column": "job_satisfaction",
+      "right_table": "usage_monthly",
+      "right_column": "data_gb",
+      "confidence": 0.695859210566705,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.2857142857142857,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.0032773990561090717,
+          "jaccard": 0.0032773990561090717,
+          "cardinality_alignment": 0.6124575637537981,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.695859210566705
+      },
+      "derived": null
+    },
+    {
+      "left_table": "agents",
+      "left_column": "training_hours",
+      "right_table": "support_tickets",
+      "right_column": "resolution_hours",
+      "confidence": 0.6839779906256369,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5714285714285714,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.15406562054208273,
+          "jaccard": 0.15406562054208273,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.6839779906256369
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "experiment_assignments",
+      "right_column": "assigned_at",
+      "confidence": 0.6831172948221205,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.47058823529411764,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.26646706586826346,
+          "jaccard": 0.26646706586826346,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.6831172948221205
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "experiment_assignments",
+      "right_column": "assigned_at",
+      "confidence": 0.6647867456251249,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.42105263157894735,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 0.9523809523809523,
+          "inclusion_pk_in_fk": 0.2994011976047904,
+          "jaccard": 0.2949852507374631,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.6647867456251249
+      },
+      "derived": null
+    },
+    {
+      "left_table": "agents",
+      "left_column": "burnout_score",
+      "right_table": "usage_monthly",
+      "right_column": "data_gb",
+      "confidence": 0.6616783730507863,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.1111111111111111,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.004326166754063975,
+          "jaccard": 0.004326166754063975,
+          "cardinality_alignment": 0.4791242304204648,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.6616783730507863
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "csat_survey",
+      "right_column": "survey_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.631578947368421,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9727520435967303,
+          "jaccard": 0.9727520435967303,
+          "cardinality_alignment": 0.9564534709122817,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "customers",
+      "right_column": "churn_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5555555555555556,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9780821917808219,
+          "jaccard": 0.9780821917808219,
+          "cardinality_alignment": 0.9812882128896462,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.631578947368421,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.1408284023668639,
+          "jaccard": 0.1408284023668639,
+          "cardinality_alignment": 0.9820818181818182,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "funnel_events",
+      "right_column": "event_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.6666666666666666,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9780821917808219,
+          "jaccard": 0.9780821917808219,
+          "cardinality_alignment": 0.8831066403892036,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "sessions",
+      "right_column": "session_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.7,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9780821917808219,
+          "jaccard": 0.9780821917808219,
+          "cardinality_alignment": 0.8831642709812088,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "voc",
+      "right_column": "received_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5714285714285714,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9780821917808219,
+          "jaccard": 0.9780821917808219,
+          "cardinality_alignment": 0.975265907324083,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "csat_survey",
+      "left_column": "survey_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.6,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 0.9918256130790191,
+          "inclusion_pk_in_fk": 0.14358974358974358,
+          "jaccard": 0.1434200157604413,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "funnel_events",
+      "left_column": "event_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5263157894736842,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.14398422090729784,
+          "jaccard": 0.14398422090729784,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "sessions",
+      "left_column": "session_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.6666666666666666,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.14398422090729784,
+          "jaccard": 0.14398422090729784,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "voc",
+      "left_column": "received_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.65,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.45454545454545453,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.14398422090729784,
+          "jaccard": 0.14398422090729784,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 0.35,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.65
+      },
+      "derived": null
+    },
+    {
+      "left_table": "csat_survey",
+      "left_column": "survey_id",
+      "right_table": "funnel_events",
+      "right_column": "session_id",
+      "confidence": 0.6447219272868203,
+      "relationship_guess": "one_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.47058823529411764,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.6297012078042737,
+          "inclusion_pk_in_fk": 0.0324,
+          "jaccard": 0.01673294427516397,
+          "cardinality_alignment": 0.2507365812664215,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.6447219272868203
+      },
+      "derived": null
+    },
+    {
+      "left_table": "agents",
+      "left_column": "training_hours",
+      "right_table": "usage_monthly",
+      "right_column": "data_gb",
+      "confidence": 0.6393105732343445,
+      "relationship_guess": "many_to_many",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.3157894736842105,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.01415836392239119,
+          "jaccard": 0.01415836392239119,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.6393105732343445
+      },
+      "derived": null
+    },
+    {
+      "left_table": "ad_spend",
+      "left_column": "spend_date",
+      "right_table": "support_tickets",
+      "right_column": "created_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.6,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.9780821917808219,
+          "jaccard": 0.9780821917808219,
+          "cardinality_alignment": 0.9029453821819402,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "ad_spend",
+      "right_column": "spend_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.875,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24929971988795518,
+          "jaccard": 0.24929971988795518,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "csat_survey",
+      "right_column": "survey_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5882352941176471,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24250681198910082,
+          "jaccard": 0.24250681198910082,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "customers",
+      "right_column": "churn_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.625,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24383561643835616,
+          "jaccard": 0.24383561643835616,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5882352941176471,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.035108481262327414,
+          "jaccard": 0.035108481262327414,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "funnel_events",
+      "right_column": "event_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.75,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24383561643835616,
+          "jaccard": 0.24383561643835616,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "sessions",
+      "right_column": "session_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.6666666666666666,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24383561643835616,
+          "jaccard": 0.24383561643835616,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "support_tickets",
+      "right_column": "created_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.6666666666666666,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24383561643835616,
+          "jaccard": 0.24383561643835616,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "end_date",
+      "right_table": "voc",
+      "right_column": "received_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.631578947368421,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.24383561643835616,
+          "jaccard": 0.24383561643835616,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "ad_spend",
+      "right_column": "spend_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5555555555555556,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.29411764705882354,
+          "jaccard": 0.29411764705882354,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "csat_survey",
+      "right_column": "survey_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.631578947368421,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.28610354223433243,
+          "jaccard": 0.28610354223433243,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "customers",
+      "right_column": "churn_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5555555555555556,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.2876712328767123,
+          "jaccard": 0.2876712328767123,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5263157894736842,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.04142011834319527,
+          "jaccard": 0.04142011834319527,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "funnel_events",
+      "right_column": "event_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5555555555555556,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.2876712328767123,
+          "jaccard": 0.2876712328767123,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "sessions",
+      "right_column": "session_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.2876712328767123,
+          "jaccard": 0.2876712328767123,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "support_tickets",
+      "right_column": "created_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.2876712328767123,
+          "jaccard": 0.2876712328767123,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "campaigns",
+      "left_column": "start_date",
+      "right_table": "voc",
+      "right_column": "received_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.47619047619047616,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.2876712328767123,
+          "jaccard": 0.2876712328767123,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "support_tickets",
+      "left_column": "created_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.62,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.38095238095238093,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 1.0,
+          "inclusion_pk_in_fk": 0.14398422090729784,
+          "jaccard": 0.14398422090729784,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.62
+      },
+      "derived": null
+    },
+    {
+      "left_table": "agents",
+      "left_column": "hire_date",
+      "right_table": "customers",
+      "right_column": "signup_date",
+      "confidence": 0.5846598731475636,
+      "relationship_guess": "temporal_overlap",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5555555555555556,
+          "identifier_anchor": 0.0,
+          "inclusion_fk_in_pk": 0.7948717948717948,
+          "inclusion_pk_in_fk": 0.036686390532544376,
+          "jaccard": 0.03634232121922626,
+          "cardinality_alignment": 0.0,
+          "date_dimension_signal": 0.6,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.5846598731475636
+      },
+      "derived": null
+    },
+    {
+      "left_table": "customers",
+      "left_column": "visitor_id",
+      "right_table": "voc",
+      "right_column": "voc_id",
+      "confidence": 0.543945651134477,
+      "relationship_guess": "one_to_one",
+      "breakdown": {
+        "signals": {
+          "type_compatibility": 1.0,
+          "name_similarity": 0.5714285714285714,
+          "identifier_anchor": 1.0,
+          "inclusion_fk_in_pk": 0.04194294525828836,
+          "inclusion_pk_in_fk": 0.03524229074889868,
+          "jaccard": 0.019524800803962385,
+          "cardinality_alignment": 1.0,
+          "date_dimension_signal": 1.0,
+          "spurious_guard": 1.0
+        },
+        "weights": {
+          "type_compatibility": 0.16,
+          "name_similarity": 0.12,
+          "identifier_anchor": 0.08,
+          "inclusion_fk_in_pk": 0.32,
+          "jaccard": 0.1,
+          "cardinality_alignment": 0.1,
+          "date_dimension_signal": 0.05,
+          "spurious_guard": 0.07
+        },
+        "weighted_score": 0.543945651134477
+      },
+      "derived": null
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>지표 사전</title>
+<meta name="description" content="지표마다 정의서 한 장. 정의서대로 값을 계산하고, 버린 정의와 비교하고, 어느 테이블에서 왔는지 보여 줍니다.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+
+  <header class="top">
+    <div class="badge">5주차 · 목업</div>
+    <h1>지표 사전</h1>
+    <p class="lead">지표마다 정의서 한 장이 있고, 카드는 <b>정의서대로만</b> 계산합니다.
+      정의서(<code>metrics/</code> 폴더의 JSON)를 고치면 코드를 고치지 않아도 카드가 바뀝니다.</p>
+    <div class="bar">
+      <label class="month" for="month">기준월
+        <select id="month"></select>
+      </label>
+      <p id="engine" class="engine">데이터 엔진 준비 중…</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="dashboard" aria-selected="true">대시보드</button>
+    <button role="tab" data-tab="cards" aria-selected="false">지표 카드</button>
+    <button role="tab" data-tab="lineage" aria-selected="false">계보</button>
+  </nav>
+
+  <section id="tab-dashboard" class="panel">
+    <div id="dashboard"></div>
+  </section>
+
+  <section id="tab-cards" class="panel" hidden>
+    <div id="cards"></div>
+  </section>
+
+  <section id="tab-lineage" class="panel" hidden>
+    <p class="small muted">왼쪽은 데이터 테이블, 가운데는 테이블에서 직접 계산하는 지표, 오른쪽은 다른 지표를 가져다 쓰는 지표입니다. 선은 «이 숫자는 저기서 온다»를 뜻합니다.</p>
+    <div id="lineage"></div>
+  </section>
+
+  <footer class="fineprint">
+    데이터는 전부 만들어낸 것입니다. 계산은 <b>이 브라우저 안</b>의 DuckDB에서 돌고, 데이터는 밖으로 나가지 않습니다.
+  </footer>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

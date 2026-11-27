@@ -1,0 +1,26 @@
+{
+  "id": "new_customers",
+  "name": "신규 가입 고객 수",
+  "purpose": "월간 보고서에서 그 달에 새로 가입한 고객이 몇 명인지 보고한다",
+  "kind": "base",
+  "unit": "명",
+  "elements": {
+    "numerator": "가입일(signup_date)이 그 달 안에 있는 고객 수",
+    "denominator": "없음 — 개수로 보고한다",
+    "period": "월 단위. 가입일이 그 달 1일부터 말일까지",
+    "filter": "없음(전체)",
+    "exclusion": "없음",
+    "min_sample": { "value": null, "reason": "개수로 보고하는 지표라 표본 기준을 두지 않는다" }
+  },
+  "sql": "SELECT COUNT(*) AS numerator FROM customers WHERE signup_date BETWEEN DATE '{month_start}' AND DATE '{month_end}'",
+  "sources": ["customers.signup_date"],
+  "rejected": [
+    {
+      "name": "첫 사용 기록이 있는 달 기준",
+      "sql": "WITH f AS (SELECT customer_id, MIN(year_month) AS first_month FROM usage_monthly GROUP BY customer_id) SELECT COUNT(*) AS numerator FROM f WHERE first_month = '{month}'",
+      "reason": "usage_monthly는 2025-01부터 시작해서, 1월에 기존 고객 전원이 첫 사용으로 잡힌다. 기록이 시작된 달 효과라 신규 가입과 다른 숫자가 된다"
+    }
+  ],
+  "unanswerable": "가입 신청을 시작했다가 끝내지 않은 방문자는 이 지표로 알 수 없다",
+  "decision": null
+}

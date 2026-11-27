@@ -1,0 +1,39 @@
+{
+  "id": "monthly_billing_total",
+  "name": "월 청구 합계",
+  "purpose": "월간 보고서에서 그 달에 고객에게 청구한 금액이 얼마인지",
+  "kind": "base",
+  "unit": "원",
+  "elements": {
+    "numerator": "그 달 usage_monthly 의 billing_amount 중 월말 유지 고객의 청구 합계",
+    "denominator": "없음 — 합계로 보고한다",
+    "period": "월 단위",
+    "filter": "없음(전체)",
+    "exclusion": "월말 유지 고객이 아닌 고객의 청구",
+    "min_sample": {
+      "value": null,
+      "reason": "합계로 보고하는 지표라 표본 기준을 두지 않는다"
+    }
+  },
+  "sql": "SELECT SUM(u.billing_amount) AS numerator FROM usage_monthly u JOIN customers c ON c.customer_id = u.customer_id WHERE u.year_month = '{month}' AND c.signup_date <= DATE '{month_end}' AND (c.churn_date IS NULL OR c.churn_date > DATE '{month_end}')",
+  "sources": [
+    "usage_monthly.year_month",
+    "usage_monthly.billing_amount",
+    "customers.signup_date",
+    "customers.churn_date"
+  ],
+  "rejected": [
+    {
+      "name": "usage_monthly 와 support_tickets 를 customer_id 로만 조인해 더한 값",
+      "sql": "SELECT SUM(u.billing_amount) AS numerator FROM usage_monthly u LEFT JOIN support_tickets t ON t.customer_id = u.customer_id WHERE u.year_month = '{month}'",
+      "reason": "문의 건수만큼 청구 행이 복제돼 12월 합계가 20.5% 부푼다"
+    },
+    {
+      "name": "해지한 고객의 청구까지 전부 더한 값",
+      "sql": "SELECT SUM(billing_amount) AS numerator FROM usage_monthly WHERE year_month = '{month}'",
+      "reason": "분모인 월말 유지 고객과 대상이 달라 고객당 매출이 1.5% 높게 나온다"
+    }
+  ],
+  "unanswerable": "청구한 금액을 실제로 받았는지(수납)",
+  "decision": null
+}

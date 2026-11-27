@@ -1,0 +1,31 @@
+{
+  "id": "support_csat_rate",
+  "name": "상담 만족도",
+  "purpose": "월간 보고서에서, 상담을 받고 설문에 응답한 고객 가운데 만족한 고객이 얼마나 되는지 보고한다",
+  "kind": "base",
+  "unit": "%",
+  "elements": {
+    "numerator": "그 달에 접수된 문의 중 설문에 응답했고 csat이 4점 이상인 문의 수",
+    "denominator": "그 달에 접수된 문의 수중 설문에 응답한 문의 수",
+    "period": "월 단위. 기준 날짜는 문의 접수일(support_tickets.created_date)",
+    "filter": "없음",
+    "exclusion": "없음",
+    "min_sample": { "value": 300, "reason": "채널별로 나눠 볼 때 응답 몇십 건 차이로 비율이 흔들리지 않게" }
+  },
+  "sql": "SELECT COUNT(*) FILTER (WHERE s.csat >= 4) AS numerator, COUNT(*) AS denominator FROM support_tickets t JOIN csat_survey s ON s.ticket_id = t.ticket_id WHERE t.created_date BETWEEN DATE '{month_start}' AND DATE '{month_end}'",
+  "sources": ["support_tickets.created_date", "csat_survey.csat"],
+  "rejected": [
+    {
+      "name": "분모를 그 달에 접수된 전체 문의로",
+      "sql": "SELECT COUNT(s.ticket_id) FILTER (WHERE s.csat >= 4) AS numerator, COUNT(*) AS denominator FROM support_tickets t LEFT JOIN csat_survey s ON s.ticket_id = t.ticket_id WHERE t.created_date BETWEEN DATE '{month_start}' AND DATE '{month_end}'",
+      "reason": "설문에 응답하지 않아 만족 여부를 모르는 문의까지 분모에 들어가, 만족하지 않은 것처럼 세게 된다"
+    },
+    {
+      "name": "분자를 5점만으로",
+      "sql": "SELECT COUNT(*) FILTER (WHERE s.csat = 5) AS numerator, COUNT(*) AS denominator FROM support_tickets t JOIN csat_survey s ON s.ticket_id = t.ticket_id WHERE t.created_date BETWEEN DATE '{month_start}' AND DATE '{month_end}'",
+      "reason": "4점으로 만족했다고 답한 고객이 만족한 고객에서 빠진다"
+    }
+  ],
+  "unanswerable": "설문에 응답하지 않은 고객의 만족도",
+  "decision": null
+}
